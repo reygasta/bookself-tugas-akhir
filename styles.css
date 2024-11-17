@@ -1,0 +1,327 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Quicksand", sans-serif;
+  }
+  
+  body {
+    background: #ffffff;
+  }
+  
+  header {
+    background: #ffffff;
+    color: #333;
+    padding: 1.5rem;
+    text-align: center;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+  }
+  
+  main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+  }
+  
+  section {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+  }
+  
+  section:hover {
+    transform: translateY(-2px);
+  }
+  
+  h2 {
+    color: #333;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Form Styles */
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  input[type="text"],
+  input[type="number"] {
+    padding: 0.8rem;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  input[type="text"]:focus,
+  input[type="number"]:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+    outline: none;
+  }
+  
+  /* Button Animations */
+  button {
+    padding: 0.8rem 1.2rem;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
+  }
+  
+  button:active {
+    transform: translateY(0);
+  }
+  
+  /* Search Animation */
+  #searchBookTitle {
+    width: 100%;
+    animation: typing 0.5s steps(30, end);
+  }
+  
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  /* Book Items Animation */
+  .book-item {
+    border: none;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    animation: slideIn 0.5s ease-out;
+  }
+  
+  .book-item.removing {
+    animation: slideOut 0.5s ease-out forwards;
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideOut {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+  }
+  
+  .book-actions {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+  }
+  
+  .book-actions button {
+    flex: 1;
+    min-width: 120px;
+  }
+  
+  /* Button Variants */
+  .delete-btn {
+    background: #ff6b6b;
+  }
+  
+  .delete-btn:hover {
+    background: #ff5252;
+  }
+  
+  .edit-btn {
+    background: #ffd93d;
+    color: #333;
+  }
+  
+  .edit-btn:hover {
+    background: #ffc93d;
+  }
+  
+  .complete-btn {
+    background: #51cf66;
+  }
+  
+  .complete-btn:hover {
+    background: #40c057;
+  }
+  
+  /* Modal Styles */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .modal.active {
+    opacity: 1;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    min-width: 350px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+  
+  .modal.active .modal-content {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    main {
+      padding: 1rem;
+    }
+    
+    .book-actions {
+      flex-direction: column;
+    }
+    
+    .modal-content {
+      width: 90%;
+      min-width: auto;
+    }
+  }
+
+  /* Dark mode toggle button */
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .dark-mode-toggle {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  
+  .dark-mode-toggle:hover {
+    background: rgba(0,0,0,0.1);
+    transform: scale(1.1);
+  }
+  
+  /* Dark Mode Styles */
+  body.dark-mode {
+    background: #1a1a1a;
+    color: #fff;
+  }
+  
+  body.dark-mode header {
+    background: #2d2d2d;
+    color: #fff;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+  }
+  
+  body.dark-mode section {
+    background: #2d2d2d;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  }
+  
+  body.dark-mode h2 {
+    color: #fff;
+  }
+  
+  body.dark-mode .book-item {
+    background: #363636;
+    color: #fff;
+  }
+  
+  body.dark-mode .book-item h3 {
+    color: #fff;
+  }
+  
+  body.dark-mode .book-item p {
+    color: #ccc;
+  }
+  
+  body.dark-mode input[type="text"],
+  body.dark-mode input[type="number"] {
+    background: #363636;
+    border-color: #444;
+    color: #fff;
+  }
+  
+  body.dark-mode input[type="text"]:focus,
+  body.dark-mode input[type="number"]:focus {
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  }
+  
+  body.dark-mode .modal {
+    background: rgba(0,0,0,0.5);
+  }
+  
+  body.dark-mode .modal-content {
+    background: #2d2d2d;
+    color: #fff;
+  }
+  
+  body.dark-mode .dark-mode-toggle {
+    color: #fff;
+  }
+  
+  body.dark-mode .dark-mode-toggle:hover {
+    background: rgba(255,255,255,0.1);
+  }
+  
+  /* Transition for smooth theme switching */
+  body, header, section, .book-item, input, .modal-content {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  }
